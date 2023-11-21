@@ -26,9 +26,9 @@ public class Program {
         System.out.println();
         System.out.println("Product data: " + product);
 
-        boolean going = true;
+        boolean turnoff = false;
 
-        while (going) {
+        while (!turnoff) {
             System.out.println("Do you want to add or remove items from stock? Type: Add or Remove (Type 'Exit' to leave) ");
             String stock = sc.nextLine();
             if (stock.equalsIgnoreCase("Add")) {
@@ -43,7 +43,7 @@ public class Program {
                 sc.nextLine();
                 product.removeProducts(item);
             } else if (stock.equalsIgnoreCase("Exit")){
-                going = false;
+                turnoff = true;
             } else {
                 System.out.println("Invalid option. Please type 'Add', 'Remove' or 'Exit'");
             }

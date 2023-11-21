@@ -1,0 +1,1 @@
+# Projeto de um sistema de estoque simples, criado somente para praticar conceitos de POO.
