@@ -1,7 +1,8 @@
-package appication;
+package application;
 
 import java.util.Locale;
 import java.util.Scanner;
+
 import entities.Product;
 
 public class Program {
@@ -9,17 +10,17 @@ public class Program {
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
 
-        Product product = new Product();
         System.out.println("Enter product data: ");
-
         System.out.print("Name: ");
-        product.name = sc.nextLine();
-
+        String name = sc.nextLine();
         System.out.print("Price: ");
-        product.price = sc.nextDouble();
+        double price = sc.nextDouble();
+        Product product = new Product(name, price);
 
-        System.out.print("Quantity in stock: ");
-        product.quantity = sc.nextInt();
+        product.setName("PC");
+        System.out.println("Updated name: " + product.getName());
+        product.setPrice(1200.00);
+        System.out.println("Updated price " +product.getPrice());
 
         sc.nextLine();
 
@@ -31,27 +32,26 @@ public class Program {
         while (!turnoff) {
             System.out.println("Do you want to add or remove items from stock? Type: Add or Remove (Type 'Exit' to leave) ");
             String stock = sc.nextLine();
-            if (stock.equalsIgnoreCase("Add")) {
+              if (stock.equalsIgnoreCase("Add")) {
                 System.out.print("Enter the number of products to be added in stock: ");
-                int item = sc.nextInt();
+                int quantity = sc.nextInt();
                 sc.nextLine();
-                product.addProducts(item);
+                product.addProducts(quantity);
             } else if (stock.equalsIgnoreCase("Remove")) {
                 System.out.print("Enter the number of products to be removed from stock: ");
-                int item = sc.nextInt();
+                int quantity = sc.nextInt();
                 System.out.println();
                 sc.nextLine();
-                product.removeProducts(item);
-            } else if (stock.equalsIgnoreCase("Exit")){
+                product.removeProducts(quantity);
+            } else if (stock.equalsIgnoreCase("Exit")) {
                 turnoff = true;
-            } else {
+
+              } else {
                 System.out.println("Invalid option. Please type 'Add', 'Remove' or 'Exit'");
             }
             System.out.println("Updated data: " + product);
         }
-        sc.nextLine();
         System.out.println("Program exited");
-
         sc.close();
     }
 }
